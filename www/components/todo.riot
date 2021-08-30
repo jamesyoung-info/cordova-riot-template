@@ -27,7 +27,7 @@
       onBeforeMount(props, state) {
         // initial state
         this.state = {
-          items: props.items,
+          items: props.items ?? [],
           text: ''
         }
       },
