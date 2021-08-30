@@ -12,6 +12,7 @@
     <access origin="*" />
     <access origin="http://*/*" />
     <access origin="https://*/*" />
+    <access origin="cdvfile://*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

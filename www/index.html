@@ -5,14 +5,6 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <!-- Good default declaration:
-         * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-         * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-         * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-            * Enable inline JS: add 'unsafe-inline' to default-src
-            * Enable eval(): add 'unsafe-eval' to default-src
-         -->
-         <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">
         <title>Riot template</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/todo.css" rel="stylesheet">
@@ -21,14 +13,19 @@
       <todo></todo>
       <script src="cordova.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="components/todo.riot" type="riot"></script>
       <script src="js/riot+compiler.min.js"></script>
+      <script src="js/riot.min.js"></script>
+      <script src="components/todo.js"></script>
       <script>
-      riot.compile().then(() => {
+         document.addEventListener("deviceready", onDeviceReady, false);
+         function onDeviceReady() {
+            console.log('Cordova file plugin is ready:')
+            console.log(JSON.stringify(cordova.file));
+         }
+         riot.register('todo', todo)
          riot.mount('todo', {
             title: 'Todo App',
          })
-      })
       </script>
     </body>
 </html>
