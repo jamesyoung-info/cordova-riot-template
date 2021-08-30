@@ -5,14 +5,22 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        
         <title>Riot template</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/todo.css" rel="stylesheet">
     </head>
     <body>
-        <app></app>
-
-        <script src="cordova.js"></script>
-        <script data-main="scripts/index.js" src="./require.js"></script>
-
+      <todo></todo>
+      <script src="cordova.js"></script>
+      <script data-main="scripts/index.js" src="./require.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/riot+compiler.min.js"></script>
+      <script>
+      riot.compile().then(() => {
+         riot.mount('todo', {
+            title: 'Todo App',
+         })
+      })
+      </script>
     </body>
 </html>
